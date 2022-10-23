@@ -1,28 +1,36 @@
-import React, { useState } from 'react'
-import Nav from "./Nav"
-import HomeIcon from '@mui/icons-material/Home';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import React, { useState } from "react";
+import Nav from "./Nav";
+import HomeIcon from "@mui/icons-material/Home";
+import BarChartIcon from "@mui/icons-material/BarChart";
 
-export default function Navs({isOpen}) {
-	const navs = [
-		{
-			icon : <HomeIcon/>,
-			link : "Home",
-			active : true,
-		},
-		{
-			icon : <BarChartIcon/>,
-			link : "Analytics",
-			active : false,
-		}
-	]
+export default function Navs({ isOpen }) {
+	const [activeHome, setActiveHome] = useState(true);
+	const [activeAnalytics, setActiveAnalytics] = useState(false);
 
-
-  return (
-	<div className="navs">
-		{navs.map(nav => (
-			<Nav icon={nav.icon} link={nav.link} active={nav.active}  isOpen={isOpen}/>
-		))}
-	</div>
-  )
+	function toggleHome() {
+		setActiveHome(true);
+		setActiveAnalytics(false);
+	}
+	function toggleAnalytics() {
+		setActiveAnalytics(true);
+		setActiveHome(false);
+	}
+	return (
+		<ul className="navs">
+			<Nav
+				icon={<HomeIcon />}
+				link="Home"
+				active={activeHome}
+				onClick={toggleHome}
+				isOpen={isOpen}
+			/>
+			<Nav
+				icon={<BarChartIcon />}
+				link="Analytics"
+				active={activeAnalytics}
+				onClick={toggleAnalytics}
+				isOpen={isOpen}
+			/>
+		</ul>
+	);
 }
