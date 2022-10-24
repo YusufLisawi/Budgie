@@ -1,3 +1,8 @@
 .content {
 	width: 70%;
 }
+* {
+	-webkit-user-select: none !important; /* Safari */
+	-ms-user-select: none !important; /* IE 10 and IE 11 */
+	user-select: none !important; /* Standard syntax */
+}
