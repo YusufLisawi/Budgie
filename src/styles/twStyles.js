@@ -7,3 +7,16 @@ export const styleToggler = `absolute cursor-pointer
 		rounded-full -right-3 top-9`;
 
 export const H1 = `font-bold text-2xl text-dark-main mb-3`;
+
+export const INPUT = `px-5 p-3 bg-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-green-main`;
+
+export const COL = `flex flex-col flex-1 gap-3`;
+
+export const BUTTON = `
+				bg-green-main 
+				text-dark-main 
+				text-center 
+				font-semibold 
+				px-10 py-3 rounded-2xl
+				hover:bg-green-dark duration-200
+				`;
