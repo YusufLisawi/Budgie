@@ -6,14 +6,14 @@ export default function Nav({ icon, link, active, isOpen, onClick }) {
 					${
 						active
 							? "transition duration-100 bg-yellow-main text-brown-main"
-							: "hover:bg-soft-yellow text-soft-dark"
+							: "hover:bg-soft-yellow text-dark-main"
 					}
 					rounded-2xl 
 					`;
 	return (
 		<li className={styleNav}>
 			<Link
-				to={`/${link.toLowerCase()}`}
+				to={link == "Home" ? "/" : `/${link.toLowerCase()}`}
 				className="px-5 py-3 flex items-center gap-x-4 font-semibold text-xl"
 				onClick={onClick}
 			>

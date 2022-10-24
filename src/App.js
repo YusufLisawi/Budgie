@@ -1,16 +1,21 @@
-import { useState } from "react";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Home from "./components/Home/Home";
+import Analytics from "./components/Analytics/Analytics";
 import "./styles/styling.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-	const [open, setOpen] = useState(true);
 	return (
 		<Router>
-			<div className="app flex">
-				<Sidebar open={open} setOpen={setOpen} />
-				<div className="flex-1 h-screen">
-					<div className="p-7 text-4xl font-bold">Home</div>
+			<div className="app flex h-screen">
+				<Sidebar />
+				<div className="flex-1 flex place-content-center py-5">
+					<div className="content shadow-lg bg-white rounded-2xl p-4">
+						<Routes>
+							<Route path="/" exact element={<Home />} />
+							<Route path="/analytics" element={<Analytics />} />
+						</Routes>
+					</div>
 				</div>
 			</div>
 		</Router>

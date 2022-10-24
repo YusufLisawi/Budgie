@@ -1,11 +1,13 @@
 import React from "react";
-import ControlSidebar from "../assets/ControlSidebar.svg";
+import { useState } from "react";
+import ControlSidebar from "../../assets/ControlSidebar.svg";
 import Logo from "./Logo";
 import Budget from "./Budget";
 import Navs from "./Navs";
-import { styleSidebar, styleToggler } from "../styles/twStyles";
+import { styleSidebar, styleToggler } from "../../styles/twStyles";
 
-export default function Sidebar({ open, setOpen }) {
+export default function Sidebar() {
+	const [open, setOpen] = useState(true);
 	return (
 		<div
 			className={`${open ? "w-60" : "w-25"}  ${styleSidebar}`}
