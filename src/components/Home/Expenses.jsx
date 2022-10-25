@@ -25,8 +25,17 @@ export default function Expenses() {
 		else return date;
 	}
 	return (
-		<div className="mt-4 recent_expenses">
+		<div className="recent_expenses">
 			<h2 className={H1 + " text-2xl font-semibold"}>Recent expenses</h2>
+			<div className="text-sm mb-2">
+				<Link
+					to="/analytics"
+					className="flex items-center gap-2 hover:text-brown-main text-soft-dark font-semibold text- duration-150"
+				>
+					<OpenInNewOutlinedIcon style={{ fontSize: "1rem" }} />
+					View all expenses
+				</Link>
+			</div>
 			<div className="expenses">
 				<FlipMove>
 					{expenses
@@ -45,12 +54,12 @@ export default function Expenses() {
 									/>
 									<Badge
 										text={putDate(expense.date)}
-										tip="tipdate"
+										tip="tipTool"
 									/>
 									<Badge text={expense.category} />
 
 									<ReactTooltip
-										id="tipdate"
+										id="tipTool"
 										place="top"
 										effect="solid"
 										type="dark"
@@ -64,15 +73,6 @@ export default function Expenses() {
 						.reverse()
 						.slice(0, 4)}
 				</FlipMove>
-				<div className="text-center">
-					<Link
-						to="/analytics"
-						className="flex justify-center items-center gap-2 hover:text-brown-main text-soft-dark font-semibold text- duration-150"
-					>
-						<OpenInNewOutlinedIcon style={{ fontSize: "1rem" }} />
-						View all expenses
-					</Link>
-				</div>
 			</div>
 		</div>
 	);

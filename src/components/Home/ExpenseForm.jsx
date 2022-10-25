@@ -137,6 +137,26 @@ export default function ExpenseForm() {
 						/>
 					</div>
 					<div className="form-control">
+						<label htmlFor="date" className={LABEL}>
+							Date
+						</label>
+						<input
+							type="date"
+							name="date"
+							value={Fields.date}
+							className={`${INPUT} ${
+								Errors.date === false
+									? "focus:ring-2 focus:ring-green-main"
+									: "ring-2 ring-red-main"
+							}`}
+							onChange={(e) =>
+								handleChange(e.target.name, e.target.value)
+							}
+						/>
+					</div>
+				</div>
+				<div className={COL}>
+					<div className="form-control">
 						<label htmlFor="description" className={LABEL}>
 							Description
 						</label>
@@ -151,26 +171,6 @@ export default function ExpenseForm() {
 									: "ring-2 ring-red-main"
 							}`}
 							max="25"
-							onChange={(e) =>
-								handleChange(e.target.name, e.target.value)
-							}
-						/>
-					</div>
-				</div>
-				<div className={COL}>
-					<div className="form-control">
-						<label htmlFor="date" className={LABEL}>
-							Date
-						</label>
-						<input
-							type="date"
-							name="date"
-							value={Fields.date}
-							className={`${INPUT} ${
-								Errors.date === false
-									? "focus:ring-2 focus:ring-green-main"
-									: "ring-2 ring-red-main"
-							}`}
 							onChange={(e) =>
 								handleChange(e.target.name, e.target.value)
 							}
@@ -202,7 +202,6 @@ export default function ExpenseForm() {
 				</div>
 			</div>
 			<button className={BUTTON}>Add</button>
-			<hr className="mt-3" />
 		</form>
 	);
 }

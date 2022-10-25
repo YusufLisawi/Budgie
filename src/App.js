@@ -4,14 +4,13 @@ import Analytics from "./components/Analytics/Analytics";
 import "./styles/styling.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./Context/AppContext";
-
 function App() {
 	return (
 		<Router>
 			<AppProvider>
 				<div className="app flex h-screen">
 					<Sidebar />
-					<div className="flex-1 flex place-content-center py-5">
+					<div className="flex-1 flex place-content-center py-5 overflow-hidden">
 						<div className="content shadow-lg bg-white rounded-2xl p-4">
 							<Routes>
 								<Route path="/" exact element={<Home />} />

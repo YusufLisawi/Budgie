@@ -6,9 +6,13 @@ import ReactTooltip from "react-tooltip";
 
 export default function Budget({ isOpen }) {
 	const { budget, expenses, dispatch } = useContext(AppContext);
-	const spendings = expenses.reduce(
+	const remaining = expenses.reduce(
 		(total, expense) => (total = total - expense.cost),
 		budget
+	);
+	const spendings = expenses.reduce(
+		(total, expense) => (total = total + Number(expense.cost)),
+		0
 	);
 
 	const Toast = Swal.mixin({
@@ -53,7 +57,7 @@ export default function Budget({ isOpen }) {
 	return (
 		<div
 			className={`${!isOpen && "flex"} budget p-4 rounded-2xl ${
-				spendings > budget / 2
+				remaining > budget / 2
 					? "text-green-text bg-green-main"
 					: "text-red-text bg-red-main"
 			}`}
@@ -77,14 +81,26 @@ export default function Budget({ isOpen }) {
 							Edit budget
 						</ReactTooltip>
 					</div>
-					<div className="spendings">
-						<span className="text-2xl font-semibold">
-							{spendings}
+					<div className="remaining">
+						<span
+							className="text-2xl font-semibold"
+							data-tip
+							data-for="spendings"
+						>
+							{remaining}
 						</span>
 						<span className="text-md font-medium">
 							{" "}
 							/ {budget} DH
 						</span>
+						<ReactTooltip
+							id="spendings"
+							place="top"
+							effect="solid"
+							className="font-bold"
+						>
+							You spent {spendings} DH
+						</ReactTooltip>
 					</div>
 				</div>
 			) : (
@@ -101,7 +117,7 @@ export default function Budget({ isOpen }) {
 						effect="solid"
 						className="font-bold"
 					>
-						{spendings} / {budget} DH
+						{remaining} / {budget} DH
 					</ReactTooltip>
 				</>
 			)}
