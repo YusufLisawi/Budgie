@@ -18,3 +18,39 @@
 	flex-direction: column;
 	gap: 0.5rem;
 }
+
+.badge {
+	/* overflow: hidden; */
+	/* inline-size: min-content; */
+	white-space: nowrap;
+	/* font-size: 0.8rem; */
+}
+.recent_expenses {
+	width: 30rem;
+	min-width: 20rem;
+	max-width: 40%;
+}
+/* 
+.expenses {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	-ms-overflow-style: none;
+	height: inherit;
+} */
+/* scroll bar */
+.expenses::-webkit-scrollbar-thumb {
+	background: var(--color);
+	border-radius: 5px;
+	padding-left: 5px;
+}
+.expenses::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	padding-left: 5px;
+}
+/* Track */
+.expenses::-webkit-scrollbar-track {
+	background: #ededed;
+	border-radius: 5px;
+	padding-left: 5px;
+}

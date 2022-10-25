@@ -1,6 +1,7 @@
 import React from "react";
 import { H1 } from "../../styles/twStyles";
 import ExpenseForm from "./ExpenseForm";
+import Expenses from "./Expenses";
 
 export default function Home() {
 	return (

@@ -25,6 +25,16 @@ const initialState = {
 			category: "Fuel",
 		},
 	],
+	categories: [
+		"General",
+		"Fuel",
+		"Grocery",
+		"Transport",
+		"Fun",
+		"Shopping",
+		"Travel",
+		"Food",
+	],
 };
 
 export const AppContext = createContext();
@@ -34,7 +44,12 @@ export const AppProvider = ({ children }) => {
 
 	return (
 		<AppContext.Provider
-			value={{ budget: state.budget, expenses: state.expenses, dispatch }}
+			value={{
+				budget: state.budget,
+				expenses: state.expenses,
+				categories: state.categories,
+				dispatch,
+			}}
 		>
 			{children}
 		</AppContext.Provider>

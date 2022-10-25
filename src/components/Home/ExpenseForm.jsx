@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { INPUT, COL, BUTTON, LABEL } from "../../styles/twStyles";
 import Swal from "sweetalert2";
 import { AppContext } from "../../Context/AppContext";
 import uuid from "react-uuid";
 
 export default function ExpenseForm() {
-	const { dispatch } = useContext(AppContext);
+	const selectOpt = useRef(null);
+	const { dispatch, categories } = useContext(AppContext);
 	const [Errors, setErrors] = useState({
 		cost: false,
 		description: false,
@@ -18,15 +19,18 @@ export default function ExpenseForm() {
 		date: "",
 		category: "General",
 	});
-	const categories = [
-		"General",
-		"Fuel",
-		"Grocery",
-		"Entertainement",
-		"Shopping",
-		"Travel",
-		"Food",
-	];
+
+	const Toast = Swal.mixin({
+		toast: true,
+		position: "top-end",
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		didOpen: (toast) => {
+			toast.addEventListener("mouseenter", Swal.stopTimer);
+			toast.addEventListener("mouseleave", Swal.resumeTimer);
+		},
+	});
 
 	function handleChange(name, value) {
 		setFields({ ...Fields, [name]: value });
@@ -94,6 +98,18 @@ export default function ExpenseForm() {
 			dispatch({
 				type: "ADD_EXPENSE",
 				payload: expense,
+			});
+			setFields({
+				cost: 0,
+				description: "",
+				date: "",
+				category: "General",
+			});
+			selectOpt.current.selectedIndex = 0;
+
+			Toast.fire({
+				icon: "success",
+				title: "Added expense successfuly",
 			});
 		}
 	}
@@ -174,6 +190,7 @@ export default function ExpenseForm() {
 							onChange={(e) =>
 								handleChange(e.target.name, e.target.value)
 							}
+							ref={selectOpt}
 						>
 							{categories.map((cat, i) => (
 								<option value={cat} key={i}>
