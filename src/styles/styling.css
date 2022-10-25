@@ -30,14 +30,12 @@
 	min-width: 20rem;
 	max-width: 45%;
 }
-
+/* 
 .content {
 	overflow: hidden;
 }
 .expenses_content {
 	overflow: hidden;
-	overflow-y: hidden;
-	/* overflow: scroll; */
 }
 .container {
 	overflow: hidden;
@@ -51,18 +49,18 @@
 	overflow-x: hidden;
 	-ms-overflow-style: none;
 	height: inherit;
-}
+} */
 /* scroll bar */
-.etudiants::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
 	background: var(--color);
 	border-radius: 10px;
 }
-.etudiants::-webkit-scrollbar {
-	width: 10px;
-	height: 10px;
+*::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
 }
 /* Track */
-.etudiants::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
 	background: #e8e8e8;
 	border-radius: 10px;
 }

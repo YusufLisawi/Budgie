@@ -24,6 +24,8 @@ export default function Expenses() {
 		else if (diffDays >= 30 && diffDays <= 31) return `1 Month ago`;
 		else return date;
 	}
+	let expensesToShow = 4;
+	if (window.screen.width <= 1280) expensesToShow = 2;
 	return (
 		<div className="recent_expenses">
 			<h2 className={H1 + " text-2xl font-semibold"}>Recent expenses</h2>
@@ -71,7 +73,7 @@ export default function Expenses() {
 							</div>
 						))
 						.reverse()
-						.slice(0, 4)}
+						.slice(0, expensesToShow)}
 				</FlipMove>
 			</div>
 		</div>
