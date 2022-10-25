@@ -46,7 +46,7 @@ export default function Budget({ isOpen }) {
 			});
 			Toast.fire({
 				icon: "success",
-				title: "Budget added successfuly",
+				title: "Budget added successfully",
 			});
 		}
 	}
@@ -68,6 +68,14 @@ export default function Budget({ isOpen }) {
 							data-tip
 							data-for="editbudget"
 						/>
+						<ReactTooltip
+							id="editbudget"
+							place="top"
+							effect="solid"
+							className="font-bold"
+						>
+							Edit budget
+						</ReactTooltip>
 					</div>
 					<div className="spendings">
 						<span className="text-2xl font-semibold">
@@ -80,29 +88,23 @@ export default function Budget({ isOpen }) {
 					</div>
 				</div>
 			) : (
-				<SettingsIcon
-					className="mx-auto cursor-pointer"
-					onClick={editBudget}
-					data-tip
-					data-for="showbudget"
-				/>
+				<>
+					<SettingsIcon
+						className="mx-auto cursor-pointer"
+						onClick={editBudget}
+						data-tip
+						data-for="showbudget"
+					/>
+					<ReactTooltip
+						id="showbudget"
+						place="top"
+						effect="solid"
+						className="font-bold"
+					>
+						{spendings} / {budget} DH
+					</ReactTooltip>
+				</>
 			)}
-			<ReactTooltip
-				id="editbudget"
-				place="top"
-				effect="solid"
-				className="font-bold"
-			>
-				Edit budget
-			</ReactTooltip>
-			<ReactTooltip
-				id="showbudget"
-				place="top"
-				effect="solid"
-				className="font-bold"
-			>
-				{spendings} / {budget} DH
-			</ReactTooltip>
 		</div>
 	);
 }

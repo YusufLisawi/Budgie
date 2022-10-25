@@ -4,6 +4,8 @@ import FlipMove from "react-flip-move";
 import { AppContext } from "../../Context/AppContext";
 import { H1 } from "../../styles/twStyles";
 import Badge from "./Badge";
+import { Link } from "react-router-dom";
+import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 
 export default function Expenses() {
 	const { expenses } = useContext(AppContext);
@@ -15,7 +17,7 @@ export default function Expenses() {
 			Math.abs(todayDate - expenseDate) / (1000 * 60 * 60 * 24),
 			10
 		);
-		if (diffDays == 1) return `Yesterday`;
+		if (diffDays === 1) return `Yesterday`;
 		else if (diffDays >= 2 && diffDays <= 14) return `${diffDays} Days ago`;
 		else if (diffDays >= 15 && diffDays <= 22) return `2 Weeks ago`;
 		else if (diffDays >= 22 && diffDays <= 30) return `3 Weeks ago`;
@@ -62,6 +64,15 @@ export default function Expenses() {
 						.reverse()
 						.slice(0, 4)}
 				</FlipMove>
+				<div className="text-center">
+					<Link
+						to="/analytics"
+						className="flex justify-center items-center gap-2 hover:text-brown-main text-soft-dark font-semibold text- duration-150"
+					>
+						<OpenInNewOutlinedIcon style={{ fontSize: "1rem" }} />
+						View all expenses
+					</Link>
+				</div>
 			</div>
 		</div>
 	);

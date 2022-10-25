@@ -109,7 +109,7 @@ export default function ExpenseForm() {
 
 			Toast.fire({
 				icon: "success",
-				title: "Added expense successfuly",
+				title: "Added expense successfully",
 			});
 		}
 	}
