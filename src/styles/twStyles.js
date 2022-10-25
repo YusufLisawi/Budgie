@@ -8,7 +8,7 @@ export const styleToggler = `absolute cursor-pointer
 
 export const H1 = `font-bold text-2xl text-dark-main mb-3`;
 
-export const INPUT = `px-5 p-3 bg-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-green-main`;
+export const INPUT = `px-5 p-3 bg-gray-100 rounded-xl outline-none`;
 
 export const COL = `flex flex-col flex-1 gap-3`;
 
@@ -17,6 +17,8 @@ export const BUTTON = `
 				text-dark-main 
 				text-center 
 				font-semibold 
-				px-10 py-3 rounded-2xl
+				px-10 py-3 rounded-2xl mt-1
 				hover:bg-green-dark duration-200
 				`;
+
+export const LABEL = `font-medium text-lg ml-1`;

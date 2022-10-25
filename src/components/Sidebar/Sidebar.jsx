@@ -23,8 +23,8 @@ export default function Sidebar() {
 				<Logo isOpen={open} />
 				<Navs isOpen={open} />
 			</div>
-			<div className="footer">
-				<Budget spendings={4820} budget={5420} isOpen={open} />
+			<div className="foot">
+				<Budget isOpen={open} />
 			</div>
 		</div>
 	);

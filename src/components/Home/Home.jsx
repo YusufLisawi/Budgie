@@ -7,6 +7,9 @@ export default function Home() {
 		<div className="container mx-auto px-4">
 			<h1 className={H1}>Add Expense</h1>
 			<ExpenseForm />
+			<div className="flex">
+				<Expenses />
+			</div>
 		</div>
 	);
 }

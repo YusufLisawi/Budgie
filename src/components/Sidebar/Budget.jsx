@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { AppContext } from "../../Context/AppContext";
 
-export default function Budget({ spendings, budget, isOpen }) {
+export default function Budget({ isOpen }) {
+	const { budget, expenses } = useContext(AppContext);
+	const spendings = expenses.reduce(
+		(total, expense) => (total = total - expense.cost),
+		budget
+	);
 	return (
 		<div
 			className={`${!isOpen && "flex"} budget p-4 rounded-2xl ${

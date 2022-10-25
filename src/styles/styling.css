@@ -1,9 +1,20 @@
 .content {
 	width: 70%;
+	min-width: 400px;
+	max-width: 2000px;
 	/* background: #9cea78; */
 }
 * {
+	outline: none;
+	-webkit-outline: none;
+	-ms-outline: none;
 	-webkit-user-select: none !important; /* Safari */
 	-ms-user-select: none !important; /* IE 10 and IE 11 */
 	user-select: none !important; /* Standard syntax */
+}
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
