@@ -20,10 +20,10 @@ export default function Pagination({
             {" "}
             {showing}{" "}
           </span>
-          to
-          <span className="font-medium"> {totalrows} </span>
+          {/* to
+          <span className="font-medium"> {totalrows} </span> */}
           of
-          <span className="font-medium"> {currentPage} </span>
+          <span className="font-medium"> {totalrows} </span>
           results
         </p>
       </div>
