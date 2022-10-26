@@ -12,6 +12,14 @@
 	-ms-user-select: none !important; /* IE 10 and IE 11 */
 	user-select: none !important; /* Standard syntax */
 }
+*:focus-visible {
+	outline: none;
+	-webkit-outline: none;
+	-ms-outline: none;
+	border: none;
+	-webkit-border: none;
+	-ms-border: none;
+}
 
 .form-control {
 	display: flex;
@@ -63,4 +71,10 @@
 *::-webkit-scrollbar-track {
 	background: #e8e8e8;
 	border-radius: 10px;
+}
+
+@media screen and (min-width: 1200px) {
+	.canvasChart {
+		width: 240px !important;
+	}
 }

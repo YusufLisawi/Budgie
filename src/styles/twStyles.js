@@ -12,7 +12,7 @@ export const styleArrow = `cursor-pointer
 
 export const H1 = `font-bold text-2xl text-dark-main mb-3`;
 
-export const INPUT = `px-5 p-3 bg-gray-100 rounded-xl outline-none`;
+export const INPUT = `px-5 p-2 bg-gray-100 rounded-xl outline-none`;
 
 export const COL = `flex flex-col flex-1 gap-3`;
 

@@ -23,7 +23,7 @@ const initialState = {
 			description: "Car gas",
 			date: "2022-10-23",
 			category: "Fuel",
-		}
+		},
 	],
 	categories: [
 		"General",
