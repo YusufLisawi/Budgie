@@ -24,12 +24,50 @@ export default function Chart({ type, title, width, labels }) {
 			.map((exps) => exps.cost)
 			.reduce((total, cost) => (total += Number(cost)), 0),
 	}));
+	function getTotalForMonths() {
+		const data = expenses.map((expense) => ({
+			month: new Date(expense.date).getMonth() + 1,
+			spends: Number(expense.cost),
+		}));
+
+		const eachMonthTotal = data.map((elem) => ({
+			month: elem.month,
+			total: data
+				.filter((exp) => exp.month === elem.month)
+				.map((exps) => Number(exps.spends))
+				.reduce((total, cost) => (total += Number(cost)), 0),
+		}));
+		return getUniqueList(eachMonthTotal, "month");
+	}
+	function getAllDataMonths() {
+		let data = getTotalForMonths();
+		let labelsMonths = [];
+		let TotalForMonths = [];
+		let i = 1;
+		while (i <= 12) {
+			let j = data.filter((el) => el.month === i);
+			if (j.length > 0) {
+				labelsMonths.push(getMonthName(j[0].month));
+				TotalForMonths.push(Number(j[0].total));
+			} else {
+				labelsMonths.push(getMonthName(i));
+				TotalForMonths.push(0);
+			}
+			i++;
+		}
+		return [labelsMonths, TotalForMonths];
+	}
+	// console.log("getAllMonths: ", getAllMonths()[0]);
 	const [dataChart, setDataChart] = useState({
-		labels: labels ? labels : getDataBy(getUniqueList(data), "category"),
+		labels: labels
+			? getAllDataMonths()[0]
+			: getDataBy(getUniqueList(data, "category"), "category"),
 		datasets: [
 			{
 				label: "Most spending categories",
-				data: getDataBy(getUniqueList(data), "spends"),
+				data: labels
+					? getAllDataMonths()[1]
+					: getDataBy(getUniqueList(data, "spends"), "spends"),
 				backgroundColor: CHART_COLORS,
 			},
 		],
@@ -38,12 +76,15 @@ export default function Chart({ type, title, width, labels }) {
 	useEffect(() => {
 		setDataChart({
 			labels: labels
-				? labels
-				: getDataBy(getUniqueList(data), "category"),
+				? getAllDataMonths()[0]
+				: getDataBy(getUniqueList(data, "category"), "category"),
 			datasets: [
 				{
-					label: "Most spending categories",
-					data: getDataBy(getUniqueList(data), "spends"),
+					label: "Expenses of each month",
+					data: labels
+						? getAllDataMonths()[1]
+						: getDataBy(getUniqueList(data, "spends"), "spends"),
+
 					backgroundColor: CHART_COLORS,
 				},
 			],
@@ -53,12 +94,15 @@ export default function Chart({ type, title, width, labels }) {
 	function getDataBy(arr, key) {
 		return arr.map((item) => item[key]);
 	}
-	function getUniqueList(arr) {
-		return [
-			...new Map(arr.map((item) => [item["category"], item])).values(),
-		];
+	function getUniqueList(arr, key) {
+		return [...new Map(arr.map((item) => [item[key], item])).values()];
 	}
+	function getMonthName(monthNumber) {
+		const date = new Date();
+		date.setMonth(monthNumber - 1);
 
+		return date.toLocaleString("en-US", { month: "short" });
+	}
 	return (
 		<div className="chart flex-1">
 			<h1 className={H1 + " mb-3"}>{title}</h1>
@@ -80,6 +124,11 @@ export default function Chart({ type, title, width, labels }) {
 						options={{
 							responsive: true,
 							maintainAspectRatio: true,
+							scales: {
+								y: {
+									beginAtZero: true,
+								},
+							},
 						}}
 					/>
 				)}

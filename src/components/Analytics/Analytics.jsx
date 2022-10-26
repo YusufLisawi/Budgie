@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 
 export default function Analytics() {
 	const { expenses, categories } = useContext(AppContext);
-	const [rows, setrows] = useState(expenses);
+	const [rows, setrows] = useState(expenses.reverse());
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage] = useState(3);
 	const [pages, setPages] = useState(rows.length / rowsPerPage);
@@ -52,7 +52,7 @@ export default function Analytics() {
 			/>
 			<br />
 			<br />
-			<Chart type="Bar" width="35vw" labels={categories} />
+			<Chart type="Bar" width="35vw" labels={1} />
 		</div>
 	);
 }
