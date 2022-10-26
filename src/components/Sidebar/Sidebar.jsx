@@ -10,7 +10,7 @@ export default function Sidebar() {
 	const [open, setOpen] = useState(true);
 	return (
 		<div
-			className={`${open ? "w-60" : "w-25"}  ${styleSidebar}`}
+			className={`${open ? "w-60" : "w-25"}  ${styleSidebar} sidebar`}
 			onDoubleClick={() => setOpen(!open)}
 		>
 			<div className="head">

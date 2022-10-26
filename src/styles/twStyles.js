@@ -5,6 +5,10 @@ export const styleToggler = `absolute cursor-pointer
 		w-6 border-2 hover:border-gray-400
 		duration-200 border-gray-200
 		rounded-full -right-3 top-9`;
+export const styleArrow = `cursor-pointer
+		w-6 border-2 hover:border-gray-400
+		duration-200 border-gray-200
+		rounded-full`;
 
 export const H1 = `font-bold text-2xl text-dark-main mb-3`;
 
