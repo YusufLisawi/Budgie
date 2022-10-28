@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import SettingsIcon from "@mui/icons-material/Settings";
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import { AppContext } from "../../Context/AppContext";
 import Swal from "sweetalert2";
 import ReactTooltip from "react-tooltip";
@@ -27,30 +27,30 @@ export default function Budget({ isOpen }) {
     },
   });
 
-  async function editBudget() {
-    const { value: newBudget } = await Swal.fire({
-      title: "Edit budget",
-      input: "text",
-      inputLabel: "Your current budget",
-      inputPlaceholder: "Enter your new budget",
-      inputValue: budget,
+  async function addIncome() {
+    const { value: newIncome } = await Swal.fire({
+      title: "Add income",
+      input: "number",
+      inputLabel: `Your current budget is ${budget}`,
+      inputPlaceholder: "Enter your new income",
+      inputValue: 0,
       confirmButtonColor: "#25292D",
       showCancelButton: true,
       inputValidator: (value) => {
-        if (!value || value < 0) {
-          return "You need to add a valid budget!";
+        if (!value || value <= 0) {
+          return "You need to add a valid income!";
         }
       },
     });
 
-    if (newBudget) {
+    if (newIncome) {
       dispatch({
-        type: "EDIT_BUDGET",
-        payload: newBudget,
+        type: "ADD_BUDGET",
+        payload: newIncome,
       });
       Toast.fire({
         icon: "success",
-        title: "Budget added successfully",
+        title: "Income added successfully",
       });
     }
   }
@@ -66,19 +66,19 @@ export default function Budget({ isOpen }) {
         <div>
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold mb-2">Budget</h2>
-            <SettingsIcon
+            <ControlPointIcon
               className="mb-2 cursor-pointer"
-              onClick={editBudget}
+              onClick={addIncome}
               data-tip
-              data-for="editbudget"
+              data-for="addincome"
             />
             <ReactTooltip
-              id="editbudget"
+              id="addincome"
               place="top"
               effect="solid"
               className="font-bold"
             >
-              Edit budget
+              Add Income
             </ReactTooltip>
           </div>
           <div className="remaining">
@@ -99,9 +99,9 @@ export default function Budget({ isOpen }) {
         </div>
       ) : (
         <>
-          <SettingsIcon
+          <ControlPointIcon
             className="mx-auto cursor-pointer"
-            onClick={editBudget}
+            onClick={addIncome}
             data-tip
             data-for="showbudget"
           />
