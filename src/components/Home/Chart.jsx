@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { AppContext } from "../../Context/AppContext";
 import { H1 } from "../../styles/twStyles";
@@ -57,7 +57,7 @@ export default function Chart({ type, title, width, labels }) {
 		}
 		return [labelsMonths, TotalForMonths];
 	}
-	// console.log("getAllMonths: ", getAllMonths()[0]);
+
 	const [dataChart, setDataChart] = useState({
 		labels: labels
 			? getAllDataMonths()[0]

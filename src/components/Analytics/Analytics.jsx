@@ -41,7 +41,12 @@ export default function Analytics() {
 	return (
 		<div className="container mx-auto px-4">
 			<h1 className={H1}>Analytics</h1>
+			<Chart type="Bar" width="35vw" labels={1} />
+			<br />
+			<br />
 			<Table rows={currentrows} />
+			{
+			rows.length > 3 &&
 			<Pagination
 				showing={currentrows.length}
 				rowsPerPage={rowsPerPage}
@@ -50,9 +55,7 @@ export default function Analytics() {
 				paginateFront={paginateFront}
 				currentPage={currentPage}
 			/>
-			<br />
-			<br />
-			<Chart type="Bar" width="35vw" labels={1} />
+			}
 		</div>
 	);
 }

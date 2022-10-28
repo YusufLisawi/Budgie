@@ -10,21 +10,16 @@ export default function Pagination({
   currentPage,
   showing,
 }) {
-//   console.log(rowsPerPage, totalrows, currentPage);
   return (
     <div className="py-2">
       <div className="flex justify-center mt-1">
         <p className="text-sm text-gray-700">
-          Showing
+          Page
           <span className="font-medium">
-            {" "}
-            {showing}{" "}
+            {" "}{currentPage}{" "}
           </span>
-          {/* to
-          <span className="font-medium"> {totalrows} </span> */}
           of
-          <span className="font-medium"> {totalrows} </span>
-          results
+          <span className="font-medium"> {Math.ceil(totalrows / rowsPerPage)} </span>
         </p>
       </div>
       <nav className="block"></nav>
