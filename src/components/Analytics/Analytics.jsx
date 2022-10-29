@@ -6,15 +6,20 @@ import Table from "./Table";
 import Pagination from "./Pagination";
 
 export default function Analytics() {
-	const { expenses, categories } = useContext(AppContext);
+	const { expenses, incomes } = useContext(AppContext);
+	const [transactions] = useState(
+		expenses
+			.concat(incomes)
+			.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+	);
 	const [rows, setrows] = useState(expenses.reverse());
 	const [currentPage, setCurrentPage] = useState(1);
 	const [rowsPerPage] = useState(3);
 	const [pages, setPages] = useState(rows.length / rowsPerPage);
 
 	useEffect(() => {
-		setrows(expenses);
-	}, [expenses]);
+		setrows(transactions);
+	}, [expenses, incomes]);
 
 	useEffect(() => {
 		setPages(pages - 1);
@@ -34,7 +39,7 @@ export default function Analytics() {
 	const paginateBack = () => {
 		if (currentPage > 1) {
 			setCurrentPage(currentPage - 1);
-			setPages(rows.length / rowsPerPage);
+			setPages(rows.length / rowsPerPage + 1);
 		}
 	};
 
@@ -45,17 +50,16 @@ export default function Analytics() {
 			<br />
 			<br />
 			<Table rows={currentrows} />
-			{
-			rows.length > 3 &&
-			<Pagination
-				showing={currentrows.length}
-				rowsPerPage={rowsPerPage}
-				totalrows={rows.length}
-				paginateBack={paginateBack}
-				paginateFront={paginateFront}
-				currentPage={currentPage}
-			/>
-			}
+			{rows.length > 3 && (
+				<Pagination
+					showing={currentrows.length}
+					rowsPerPage={rowsPerPage}
+					totalrows={rows.length}
+					paginateBack={paginateBack}
+					paginateFront={paginateFront}
+					currentPage={currentPage}
+				/>
+			)}
 		</div>
 	);
 }

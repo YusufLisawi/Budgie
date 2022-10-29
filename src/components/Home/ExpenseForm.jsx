@@ -6,7 +6,7 @@ import uuid from "react-uuid";
 
 export default function ExpenseForm() {
 	const selectOpt = useRef(null);
-	const { dispatch, categories } = useContext(AppContext);
+	const { addExpense, categories } = useContext(AppContext);
 	const [Errors, setErrors] = useState({
 		cost: false,
 		description: false,
@@ -94,11 +94,9 @@ export default function ExpenseForm() {
 				id: uuid(),
 				cost: Number(Fields.cost),
 				...Fields,
+				dateAdded: String(new Date()),
 			};
-			dispatch({
-				type: "ADD_EXPENSE",
-				payload: expense,
-			});
+			addExpense(expense);
 			setFields({
 				cost: 0,
 				description: "",

@@ -1,7 +1,26 @@
 import React, { useContext } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { AppContext } from "../../Context/AppContext";
+import Swal from "sweetalert2";
 
 export default function Table({ rows }) {
-	const TD = "py-3 px-6 whitespace-nowrap";
+	const { deleteTransaction } = useContext(AppContext);
+	const TD = "py-3 px-6 whitespace-nowrap font-medium";
+
+	function deleteMe(id, type) {
+		// Swal.fire({
+		// 	title: "Do you want to delete this transaction?",
+		// 	confirmButtonText: "Yes",
+		// 	showCancelButton: true,
+		// 	cancelButtonText: "No",
+		// }).then((result) => {
+		// 	if (result.isConfirmed) {
+		// 		deleteTransaction(id, type);
+		// 		Swal.fire("Saved!", "", "success");
+		// 	}
+		// });
+		// alert(id);
+	}
 	return (
 		<div className="overflow-x-auto relative rounded-xl">
 			<table className="w-full text-sm text-left rounded-t">
@@ -11,7 +30,7 @@ export default function Table({ rows }) {
 							Description
 						</th>
 						<th scope="col" className={TD}>
-							Cost
+							Amount
 						</th>
 						<th scope="col" className={TD}>
 							Category
@@ -19,21 +38,34 @@ export default function Table({ rows }) {
 						<th scope="col" className={TD}>
 							Date
 						</th>
+						<th scope="col" className={TD}></th>
 					</tr>
 				</thead>
 				<tbody>
-					{rows
-						.map((exp) => (
-							<tr className="border-b" key={exp.id}>
-								<th scope="row" className={TD + "font-medium"}>
-									{exp.description}
-								</th>
-								<td className={TD}>{Number(exp.cost)} DH</td>
-								<td className={TD}>{exp.category}</td>
-								<td className={TD}>{exp.date}</td>
-							</tr>
-						))
-						.reverse()}
+					{rows.map((tr) => (
+						<tr className="border-b" key={tr.id}>
+							<th scope="row" className={TD + "font-medium"}>
+								{!tr.description ? "$" : tr.description}
+							</th>
+							{tr.cost && (
+								<td className={TD + " text-red-main"}>
+									-{Number(tr.cost)} DH
+								</td>
+							)}
+							{tr.amount && (
+								<td className={TD + " text-green-500"}>
+									+{Number(tr.amount)} DH
+								</td>
+							)}
+							<td className={TD}>{tr.category}</td>
+							<td className={TD}>{tr.date}</td>
+							<td className={TD}>
+								<button onClick={console.log(tr.id)}>
+									<DeleteIcon className="cursor-pointer text-red-main" />
+								</button>
+							</td>
+						</tr>
+					))}
 				</tbody>
 			</table>
 		</div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import FlipMove from "react-flip-move";
 import { AppContext } from "../../Context/AppContext";
@@ -9,6 +9,9 @@ import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 
 export default function Transactions() {
 	const { expenses, incomes } = useContext(AppContext);
+	const transactions = expenses
+		.concat(incomes)
+		.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
 
 	function putDate(date) {
 		var todayDate = new Date();
@@ -29,7 +32,9 @@ export default function Transactions() {
 	if (window.screen.width <= 1280) transactionsToShow = 2;
 	return (
 		<div className="recent_expenses">
-			<h2 className={H1 + " text-2xl font-semibold"}>Recent Transactions</h2>
+			<h2 className={H1 + " text-2xl font-semibold"}>
+				Recent Transactions
+			</h2>
 			<div className="text-sm mb-2">
 				<Link
 					to="/analytics"
@@ -41,25 +46,31 @@ export default function Transactions() {
 			</div>
 			<div className="expenses">
 				<FlipMove>
-					{expenses
-						.map((expense) => (
+					{transactions
+						.map((tr) => (
 							<div
-								key={expense.id}
+								key={tr.id}
 								className="bg-gray-100 rounded-xl p-4 mb-3 mr-2"
 							>
-								<h3 className={H1 + " text-xl font-meduim"}>
-									{expense.description}
-								</h3>
+								{tr.description && (
+									<h3 className={H1 + " text-xl font-meduim"}>
+										{tr.description}
+									</h3>
+								)}
 								<div className="badges flex gap-3 flex-wrap">
 									<Badge
-										text={`-${Number(expense.cost)} DH`}
-										isCost={1}
+										text={`${
+											tr.cost
+												? `-${Number(tr.cost)}`
+												: `+${Number(tr.amount)}`
+										} DH`}
+										isCost={tr.cost ? 1 : 2}
 									/>
 									<Badge
-										text={putDate(expense.date)}
+										text={putDate(tr.date)}
 										tip="tipTool"
 									/>
-									<Badge text={expense.category} />
+									<Badge text={tr.category} />
 
 									<ReactTooltip
 										id="tipTool"
@@ -68,40 +79,11 @@ export default function Transactions() {
 										type="dark"
 										className="font-bold"
 									>
-										{expense.date}
+										{tr.date}
 									</ReactTooltip>
 								</div>
 							</div>
 						))
-						.reverse()
-						.slice(0, transactionsToShow)}
-						{incomes.map((income) => (
-							<div
-								key={income.id}
-								className="bg-gray-100 rounded-xl p-4 mb-3 mr-2"
-							>
-								<div className="badges flex gap-3 flex-wrap">
-									<Badge
-										text={`+${Number(income.amount)} DH`}
-										isCost={2}
-									/>
-									<Badge
-										text={putDate(income.date)}
-										tip="tipTool2"
-									/>
-									<ReactTooltip
-										id="tipTool2"
-										place="top"
-										effect="solid"
-										type="dark"
-										className="font-bold"
-									>
-										{income.date}
-									</ReactTooltip>
-								</div>
-							</div>
-						))
-						.reverse()
 						.slice(0, transactionsToShow)}
 				</FlipMove>
 			</div>
