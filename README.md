@@ -15,9 +15,11 @@ npm start
 
 ## Tools used
 
-*   Reactjs
-    *   Context api
-    *   useState, useEffect
-    *   react router v6
-*   Tailwind css
-*   chart.js
+-   Reactjs
+    -   Context api
+    -   useState, useEffect
+    -   react router v6
+-   LocalStorage
+-   Tailwind css
+-   chart.js
+-   SweetAlert2
