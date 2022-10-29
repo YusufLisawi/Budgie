@@ -18,7 +18,7 @@ const AppReducer = (state, action) => {
 				...state,
 				incomes: [...state.incomes, action.payload],
 			};
-		case "DELELTE_EXPENSE":
+		/* case "DELELTE_EXPENSE":
 			return {
 				...state,
 				expenses: state.expenses.filter(
@@ -31,7 +31,7 @@ const AppReducer = (state, action) => {
 				incomes: state.incomes.filter(
 					(inc) => inc.id !== action.payload
 				),
-			};
+			}; */
 		default:
 			return state;
 	}
@@ -86,7 +86,7 @@ export const AppProvider = ({ children }) => {
 			payload: expense,
 		});
 	}
-	function deleteTransaction(id, type) {
+	/* 	function deleteTransaction(id, type) {
 		if (type === "income")
 			dispatch({
 				type: "DELETE_INCOME",
@@ -97,7 +97,7 @@ export const AppProvider = ({ children }) => {
 				type: "DELETE_EXPENSE",
 				payload: id,
 			});
-	}
+	} */
 	return (
 		<AppContext.Provider
 			value={{
@@ -107,8 +107,8 @@ export const AppProvider = ({ children }) => {
 				categories: state.categories,
 				addBudget,
 				addExpense,
-				deleteTransaction,
 				dispatch,
+				// deleteTransaction,
 			}}
 		>
 			{children}
