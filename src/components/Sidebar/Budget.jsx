@@ -7,7 +7,7 @@ import ReactTooltip from "react-tooltip";
 export default function Budget({ isOpen }) {
 	const { budget, expenses, addBudget } = useContext(AppContext);
 	const remaining = expenses.reduce(
-		(total, expense) => (total = total - expense.cost),
+		(total, expense) => (total = total - Number(expense.cost)),
 		budget
 	);
 	const spendings = expenses.reduce(
@@ -54,7 +54,7 @@ export default function Budget({ isOpen }) {
 	return (
 		<div
 			className={`${!isOpen && "flex"} budget p-4 rounded-2xl ${
-				remaining > budget / 2
+				remaining <= 0
 					? "text-green-text bg-green-main"
 					: "text-red-text bg-red-main"
 			}`}
