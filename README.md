@@ -23,3 +23,5 @@ npm start
 -   Tailwind css
 -   chart.js
 -   SweetAlert2
+-   react-tiptool
+-   react-flipMove
