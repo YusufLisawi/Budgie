@@ -49,7 +49,7 @@ const AppReducer = (state: State, action: Action): State => {
         incomes: [...state.incomes, action.payload],
       };
     /* case "DELETE_EXPENSE":
-       return {
+       return {1
          ...state,
          expenses: state.expenses.filter(exp => exp.id !== action.payload),
        };
