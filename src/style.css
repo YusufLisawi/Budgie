@@ -1,12 +1,3 @@
-/*
-! tailwindcss v3.2.1 | MIT License | https://tailwindcss.com
-*/
-
-/*
-1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-*/
-
 *,
 ::before,
 ::after {
@@ -25,64 +16,31 @@
   --tw-content: '';
 }
 
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-*/
-
 html {
   line-height: 1.5;
-  /* 1 */
   -webkit-text-size-adjust: 100%;
-  /* 2 */
-  /* 3 */
   tab-size: 4;
-  /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* 4 */
 }
-
-/*
-1. Remove the margin in all browsers.
-2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-*/
 
 body {
   margin: 0;
-  /* 1 */
   line-height: inherit;
-  /* 2 */
 }
 
-/*
-1. Add the correct height in Firefox.
-2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-3. Ensure horizontal rules are visible by default.
-*/
 
 hr {
   height: 0;
-  /* 1 */
   color: inherit;
-  /* 2 */
   border-top-width: 1px;
-  /* 3 */
 }
 
-/*
-Add the correct text decoration in Chrome, Edge, and Safari.
-*/
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
 }
 
-/*
-Remove the default font size and weight for headings.
-*/
 
 h1,
 h2,
@@ -94,50 +52,30 @@ h6 {
   font-weight: inherit;
 }
 
-/*
-Reset links to optimize for opt-in styling instead of opt-out.
-*/
 
 a {
   color: inherit;
   text-decoration: inherit;
 }
 
-/*
-Add the correct font weight in Edge and Safari.
-*/
-
 b,
 strong {
   font-weight: bolder;
 }
-
-/*
-1. Use the user's configured `mono` font family by default.
-2. Correct the odd `em` font sizing in all browsers.
-*/
 
 code,
 kbd,
 samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /* 1 */
   font-size: 1em;
-  /* 2 */
 }
 
-/*
-Add the correct font size in all browsers.
-*/
 
 small {
   font-size: 80%;
 }
 
-/*
-Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-*/
 
 sub,
 sup {
@@ -341,11 +279,6 @@ textarea {
   resize: vertical;
 }
 
-/*
-1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-2. Set the default placeholder color to the user's configured gray 400 color.
-*/
-
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   opacity: 1;
   /* 1 */
@@ -392,7 +325,7 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
+  display: default;
   /* 1 */
   vertical-align: middle;
   /* 2 */
@@ -411,7 +344,7 @@ video {
 /* Make elements with the HTML hidden attribute stay hidden by default */
 
 [hidden] {
-  display: none;
+  display: default;
 }
 
 *, ::before, ::after {
@@ -661,4 +594,38 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media (max-width: 640px) {
+  .text-base {
+    font-size: 1rem; /* Уменьшенный размер текста для мобильных устройств */
+  }
+
+  .p-4 {
+    padding: 1rem; /* Уменьшенные отступы для мобильных устройств */
+  }
+
+  .container {
+    padding: 0 1rem; /* Уменьшенные отступы контейнера для мобильных устройств */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-base {
+    font-size: 1.125rem; /* Средний размер текста для планшетов */
+  }
+
+  .p-4 {
+    padding: 1.5rem; /* Средние отступы для планшетов */
+  }
+}
+
+@media (min-width: 1025px) {
+  .text-base {
+    font-size: 1.25rem; /* Большой размер текста для настольных компьютеров */
+  }
+
+  .p-4 {
+    padding: 2rem; /* Большие отступы для настольных компьютеров */
+  }
 }

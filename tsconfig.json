@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",                                 // Задает целевую версию ECMAScript для выходного кода
+    "lib": ["dom", "dom.iterable", "esnext"],        // Определяет библиотеки, которые будут включены в компиляцию
+    "allowJs": true,                                 // Разрешает компиляцию JS файлов
+    "skipLibCheck": true,                            // Пропускает проверку типов файлов .d.ts
+    "esModuleInterop": true,                         // Разрешает импорт модулей ES6 в стиле CommonJS
+    "allowSyntheticDefaultImports": true,            // Разрешает default импорты из модулей без default export
+    "strict": true,                                  // Включает строгий режим
+    "forceConsistentCasingInFileNames": true,        // Запрещает несоответствие регистра в именах файлов
+    "module": "esnext",                              // Определяет систему модулей
+    "moduleResolution": "node",                      // Стратегия разрешения модулей
+    "resolveJsonModule": true,                       // Разрешает импорт JSON файлов
+    "isolatedModules": true,                         // Гарантирует, что каждый файл может быть безопасно транспилирован без учета других файлов
+    "noEmit": true,                                  // Не создает выходные файлы
+    "jsx": "react-jsx"                               // Поддержка JSX для React
+  },
+  "include": ["src/**/*"]                            // Указывает TypeScript компилировать файлы в директории src
+}
